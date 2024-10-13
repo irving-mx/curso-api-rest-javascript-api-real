@@ -1,0 +1,19 @@
+{
+  "name": "l",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irving-mx/curso-api-rest-javascript-api-real.git"
+  },
+  "author": "@irving-mx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/irving-mx/curso-api-rest-javascript-api-real/issues"
+  },
+  "homepage": "https://github.com/irving-mx/curso-api-rest-javascript-api-real#readme"
+}
