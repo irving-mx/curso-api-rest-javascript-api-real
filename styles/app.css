@@ -1,3 +1,234 @@
-body{
-    background-color: red;
+
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+}
+html{
+    font-size:62.5%;
+}
+:root{
+    --blue-night:#30475E;
+    --salmon-color:#F05454;
+    --white:#F5F5F5;
+    --black:#121212;
+}
+
+header{
+    width: 100%;
+    height: 60px;
+}
+nav{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.search__icon{
+    width: 30px;
+    height: 30px;
+}
+.menu{
+    width: 40px;
+    height: 40px;
+    margin-right: 18px;
+}
+.popcorn__icon{
+    width: 50px;
+    height: 50px;
+}
+.poster-movie img{
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+.favorite__movies,.best__movies{
+    width: 100%;
+    height: 300px;
+}
+.favorite__movies h2{
+    margin-left: 16px;
+    font-size: 2rem;
+}
+.best__movies h2{
+    margin-left: 16px;
+    font-size: 2rem;
+}
+.favorite__movies--slider,.best__movies--slider{
+    width: 90%;
+    display: flex;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    margin:10px auto;
+    gap: 10px;
+}
+.movie-container img{
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 6px 11px 21px -10px rgba(0,0,0,0.84);
+    scroll-snap-align: center;
+}
+
+.information-movie{
+    height: 85vh;
+    /* background-color: #F05454; */
+}
+/* .information-movie--up{
+    height: 28vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/joker-folie-a-deux-still-2-600x450.jpg);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.7;
+    width: 100%;
+    z-index: -1;
+} */
+
+.information-movie--up {
+    height: 28vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    z-index: 1; /* El contenido estará sobre el fondo */
+}
+
+.information-movie--up::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/joker-folie-a-deux-still-2-600x450.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.85; 
+    /* Solo el fondo tendrá opacidad */
+    filter: blur(.3rem);
+    z-index: -1; /* Asegura que esté detrás del contenido */
+}
+
+
+.movie-img{
+    height: 200px;
+    min-width: 150px;
+    margin: 0px auto;
+    z-index: 1;
+}
+.return__icon img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    z-index: 2;
+}
+.information-movie--down{
+    /* background-color: #F05454; */
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    height:auto;
+    padding: 10px;
+}
+.information-movie--down article{
+    margin-bottom: 25px;
+}
+.information-movie--down article h2{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+}
+.information-movie--down article p{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+.information-movie--down div h2{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+.information-movie--down div p{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+.search-movie{
+    width: 100%;
+    background-color: var(--salmon-color);
+    height: auto;
+}
+.search-movie div{
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+}
+.search-movie span img{
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+.search-movie--name{
+    background-color: var(--blue-night);
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-movie--name input{
+    width: 15rem;
+    height: 3rem;
+    border-radius: 1rem;
+    padding-left: 1rem;
+}
+.search-movie--name img{
+    width: 35px;
+    height: 35px;
+    margin-left: 1rem;
+}
+
+footer{
+    width: 100%;
+    height: 50px;
+    background-color: var(--blue-night);
+}
+footer ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+footer ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+footer ul li a{
+    text-decoration: none;
+    color: white;
+    margin-left: 6px;
+    font-size: 1.4rem;
+}
+
+.inactive{
+    display:none;
 }
