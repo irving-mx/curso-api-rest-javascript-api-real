@@ -4,6 +4,7 @@ const sectionFavoriteMovie = document.querySelector(".favorite__movies");
 const sectionBestMovie = document.querySelector(".best__movies");
 const sectionInformationMovie = document.querySelector(".information-movie");
 const sectionSearchMovie = document.querySelector(".search-movie")
+const sectionMoviesCategories = document.querySelector(".movies-categories");
 const returnInformationMovie = document.querySelector(".return__icon--information-movie");
 const returnSearchMovie = document.querySelector(".return__icon--search-movie");
 
@@ -13,16 +14,19 @@ returnInformationMovie.addEventListener("click",()=>{
     sectionFavoriteMovie.classList.toggle('inactive');
     sectionBestMovie.classList.toggle('inactive');
     sectionInformationMovie.classList.toggle('inactive');
+    sectionMoviesCategories.classList.toggle('inactive');
 })
 
 
 returnSearchMovie.addEventListener("click",()=>{
     
     sectionPosterMovie.classList.toggle('inactive');
-    sectionFavoriteMovie.classList.toggle('inactive');
+    // sectionFavoriteMovie.classList.toggle('inactive');
     sectionBestMovie.classList.toggle('inactive');
     sectionSearchMovie.classList.toggle('inactive');
     header.classList.toggle('inactive')
+    sectionMoviesCategories.classList.toggle('inactive');
+
 })
 
 async function getTrendingMoviesPreview(){
@@ -43,4 +47,26 @@ async function getTrendingMoviesPreview(){
     })
 
 }
+
+async function getCategoriesMovies(){
+    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
+    const data = await res.json();
+    const categories = data.genres;
+    categories.forEach((category)=>{
+        const moviesCategoriesContainer = document.querySelector('.movies-categories--container');
+        const movieCategory = document.createElement('div');
+        movieCategory.classList.add('movie-category');
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.classList.add('category-title');
+
+        categoryTitle.setAttribute('id','id' + category.id)
+        const categoryTextTitle = document.createTextNode(category.name)
+
+        categoryTitle.appendChild(categoryTextTitle);
+        movieCategory.appendChild(categoryTitle);
+        moviesCategoriesContainer.appendChild(movieCategory);
+
+    })
+}
 getTrendingMoviesPreview()
+getCategoriesMovies()

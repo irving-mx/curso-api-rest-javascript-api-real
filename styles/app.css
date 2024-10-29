@@ -55,8 +55,11 @@ nav{
 }
 .best__movies h2{
     margin-left: 16px;
+    margin-top: 18px;
+    margin-bottom: 14px;
     font-size: 2rem;
 }
+
 .favorite__movies--slider,.best__movies--slider{
     width: 90%;
     display: flex;
@@ -75,6 +78,40 @@ nav{
     scroll-snap-align: center;
 }
 
+.movies-categories{
+    height: auto;
+    background-color: rgb(14 45 44 / 6%);
+    padding: 20px;
+}
+.movies-categories h2{
+    margin-bottom: 10px;
+    font-family: 'Outfit',sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.movies-categories--container{
+    /* background-color: #5456752a; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.movie-category{
+    width: 100px;
+    /* background-color: rgba(122, 159, 240, 0.904); */
+    padding: 2px;
+    margin: 7px 4px;
+    border-radius: 3px;
+    /* -webkit-box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.47);
+-moz-box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.47);
+box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.35); */
+    box-shadow: -1px -1px 6px 0 rgb(122, 221, 102), 4px 4px 16px 2px rgb(92, 162, 235);
+}
+.category-title{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+    text-align: center;
+}
 .information-movie{
     height: 85vh;
     /* background-color: #F05454; */
