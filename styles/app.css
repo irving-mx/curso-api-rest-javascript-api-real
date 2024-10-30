@@ -31,6 +31,10 @@ nav{
     width: 30px;
     height: 30px;
 }
+.search__icon:hover{
+    cursor: pointer;
+    transform: scale(1.1); /* Aumenta el tamaño al 110% */
+}
 .menu{
     width: 40px;
     height: 40px;
@@ -165,13 +169,17 @@ box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.35); */
     margin: 0px auto;
     z-index: 1;
 }
-.return__icon img{
+/* .return__icon img{
     width: 50px;
     height: 50px;
     position: absolute;
     top: 1rem;
     left: 2rem;
     z-index: 2;
+} */
+.return__home:hover{
+    cursor: pointer;
+    transform: scale(1.1); /* Aumenta el tamaño al 110% */
 }
 .information-movie--down{
     /* background-color: #F05454; */

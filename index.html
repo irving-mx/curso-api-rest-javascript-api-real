@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header class="inactive">
+        <header>
             <nav>
                 <img class="popcorn__icon" src="./assets/popcorn.svg" alt="icono de palomitas">
 
@@ -21,11 +21,11 @@
             </nav>
         </header>
         <main>
-            <section class="poster-movie inactive" >
+            <section class="poster-movie " >
                 <img src="./assets/01POSTER-GUASON--691x1024.jpg" alt="imagen de la peligula guason2">
             </section>
 <!--             
-            <section class="favorite__movies inactive">
+            <section class="favorite__movies ">
                 <h2>Favoritos</h2>
                 <section class="favorite__movies--slider">
                     <div class="movie-container">
@@ -43,7 +43,7 @@
                 </section>
             </section > -->
                 
-            <section class="best__movies inactive" >
+            <section class="best__movies " >
                 <h2>Mejores Películas</h2>
                 <section class="best__movies--slider">
                     <!-- <div class="movie-container">
@@ -62,7 +62,7 @@
             </section>
             
 
-            <section class="movies-categories inactive">
+            <section class="movies-categories ">
                 <h2>Categorias</h2>
                 <section class="movies-categories--container">
                     <!-- <div class="movie-category">
@@ -88,10 +88,10 @@
         
             
         </main>
-        <section class="information-movie inactive">
+        <section class="information-movie ">
             <section class="information-movie--up">
                 <span class="return__icon--information-movie">
-                    <img src="./assets/return.png" alt="">
+                    <img class="return__home" src="./assets/return.png" alt="">
                 </span>
                 <img class="movie-img" src="./assets/01POSTER-GUASON--691x1024.jpg" alt="">
             </section>
@@ -106,10 +106,10 @@
                 </div>
             </section>
         </section>
-        <section class="search-movie">
+        <section class="search-movie ">
             <div>
                 <span class="return__icon--search-movie">
-                    <img src="./assets/return.png" alt="">
+                    <img class="return__home" src="./assets/return.png" alt="">
                 </span>
                 <section class="search-movie--name">
                     <input placeholder="Search movie" type="text">
@@ -137,6 +137,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="./src/api-key.js"></script>
+        <script src="./src/nodes.js"></script>
         <script src="./src/main.js"></script>
         <script src="./src/navegation.js"></script>
     </body>
