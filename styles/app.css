@@ -100,6 +100,7 @@ nav{
     justify-content: space-between;
 }
 .movie-category{
+    cursor: pointer;
     min-width: 120px;
     /* background-color: rgba(122, 159, 240, 0.904); */
     padding: 2px;
@@ -109,6 +110,10 @@ nav{
 -moz-box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.47);
 box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.35); */
     box-shadow: -1px -1px 6px 0 rgb(122, 221, 102), 4px 4px 16px 2px rgb(92, 162, 235);
+}
+.movie-category:hover{
+    box-shadow: 2px 2px 8px 0 rgb(209, 102, 221), 4px 4px 16px 0 #d66, 0px 0px 24px 2px rgb(221, 197, 102); 
+    transform: scale(1.1);
 }
 .category-title{
     font-family: 'Outfit',sans-serif;
@@ -247,6 +252,37 @@ box-shadow: 9px 10px 22px 1px rgba(0,0,0,0.35); */
     height: 35px;
     margin-left: 1rem;
 }
+.category-collection{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.category-collection--container{
+    width: 80%;
+    margin-top: 10px;
+}
+.category-collection span{
+    display: flex;
+    align-items: center;
+}
+.category-collection span h3{
+    font-family: 'Outfit',sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-left: 20px;
+}
+.movie-collection{
+    margin-left: 25px;
+}
+.movie-collection img{
+    /* width: 150px; */
+    height: 200px;
+}
+
 
 footer{
     width: 100%;

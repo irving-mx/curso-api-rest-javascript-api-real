@@ -11,24 +11,28 @@ async function getTrendingMoviesPreview(){
     const movies = data.results;
     console.log(data.results)
     
-    const moviesSection = document.querySelector('.best__movies--slider');
-    moviesSection.innerHTML=" ";
-    movies.forEach((movie)=>{
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container')
-        const movieImg = document.createElement('img')
-        movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185' + movie.poster_path);
-        movieImg.setAttribute('alt', movie.title)
+    // moviesSection.innerHTML=" ";
+    generateMoviesContainer(movies,moviesSection);
 
-        movieContainer.appendChild(movieImg)
-        moviesSection.appendChild(movieContainer)
-    })
+    // movies.forEach((movie)=>{
+    //     const movieContainer = document.createElement('div');
+    //     movieContainer.classList.add('movie-container')
+    //     const movieImg = document.createElement('img')
+    //     movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185' + movie.poster_path);
+    //     movieImg.setAttribute('alt', movie.title)
+
+    //     movieContainer.appendChild(movieImg)
+    //     moviesSection.appendChild(movieContainer)
+    // })
 }
 
 async function getCategoriesMovies(){
     const { data } = await api('genre/movie/list?'+'&language=es');
     const categories = data.genres;
-    const moviesCategoriesContainer = document.querySelector('.movies-categories--container');
+    for (let i = 0; i < data.genres.length; i++) {
+        const genre = data.genres[i];
+        console.log(`ID: ${genre.id}, Name: ${genre.name}`);
+    }
     moviesCategoriesContainer.innerHTML= " ";
     categories.forEach((category)=>{
         const movieCategory = document.createElement('div');
@@ -39,8 +43,52 @@ async function getCategoriesMovies(){
         categoryTitle.setAttribute('id','id' + category.id)
         const categoryTextTitle = document.createTextNode(category.name)
 
+        categoryTitle.addEventListener('click',()=>{
+            location.hash= `#category=${category.id}-${category.name}`
+        })
         categoryTitle.appendChild(categoryTextTitle);
         movieCategory.appendChild(categoryTitle);
         moviesCategoriesContainer.appendChild(movieCategory);
+    })
+}
+
+async function getByMoviesByCategory(id,name){
+    console.log("entre aqui y el id es " + id)
+    const { data } = await api('discover/movie', {
+        params: {
+            with_genres: id, 
+        },
+    });
+    const movies = data.results;
+
+    console.log(data.results)
+    
+    // categoryCollectionContainer.innerHTML=" ";
+    titleCategory.textContent=decodeURIComponent(name);
+    generateMoviesContainer(movies,categoryCollectionContainer);
+    // movies.forEach((movie)=>{
+    //     const movieContainer = document.createElement('div');
+    //     movieContainer.classList.add('movie-container')
+    //     const movieImg = document.createElement('img')
+    //     movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185' + movie.poster_path);
+    //     movieImg.setAttribute('alt', movie.title)
+
+    //     movieContainer.appendChild(movieImg)
+    //     categoryCollectionContainer.appendChild(movieContainer)
+    // })
+}
+
+
+function generateMoviesContainer(movies,container){
+    container.innerHTML= " ";
+    movies.forEach((movie)=>{
+        const movieContainer = document.createElement('div');
+        movieContainer.classList.add('movie-container')
+        const movieImg = document.createElement('img')
+        movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185' + movie.poster_path);
+        movieImg.setAttribute('alt', movie.title)
+
+        movieContainer.appendChild(movieImg)
+        container.appendChild(movieContainer)
     })
 }
