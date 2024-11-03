@@ -78,7 +78,15 @@ async function getByMoviesByCategory(id,name){
     // })
 }
 
-
+async function getByMoviesByQuery(query){
+    const { data } = await api('search/movie',{
+        params: {
+            query
+        }
+    })
+    const movies = data.results;
+    generateMoviesContainer(movies, sectionSearchMovieMainContainer);
+}
 function generateMoviesContainer(movies,container){
     container.innerHTML= " ";
     movies.forEach((movie)=>{
