@@ -87,6 +87,28 @@ async function getByMoviesByQuery(query){
     const movies = data.results;
     generateMoviesContainer(movies, sectionSearchMovieMainContainer);
 }
+
+
+async function getUpcomingMovies(){
+    const { data }= await api('movie/upcoming')
+    const movies = data.results;
+    console.log("Entre en upcoming")
+    console.log(movies)
+    generateMoviesContainer(movies,sectionUpcomingContainer)
+}
+
+async function getByMovieByID(ID){
+    const { data } = await api(`movie/${ID}`)
+    const movie = data;
+    console.log("La película es: "+ movie.original_title +  " *** "+ movie.release_date+ " //// "+movie.overview)
+
+    nameMovie.innerHTML = movie.original_title;
+    dateMovie.innerHTML = movie.release_date;
+    summaryMovie.innerHTML = movie.overview;
+    movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185'+ movie.poster_path)
+
+}
+
 function generateMoviesContainer(movies,container){
     container.innerHTML= " ";
     movies.forEach((movie)=>{
@@ -95,7 +117,9 @@ function generateMoviesContainer(movies,container){
         const movieImg = document.createElement('img')
         movieImg.setAttribute('src','https://image.tmdb.org/t/p/w185' + movie.poster_path);
         movieImg.setAttribute('alt', movie.title)
-
+        movieContainer.addEventListener('click',()=>{
+            location.hash= `#informationMovie=${movie.id}`
+        })
         movieContainer.appendChild(movieImg)
         container.appendChild(movieContainer)
     })

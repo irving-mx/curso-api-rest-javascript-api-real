@@ -17,27 +17,29 @@ window.addEventListener('hashchange',navigator,false);
     })
 
 
-returnHome.forEach(icon =>{
+    
+    returnHome.forEach(icon =>{
     icon.addEventListener('click',()=>{
-        location.hash = '#home';
+        // location.hash = '#home';
+        history.back();
         console.log("Click return")
     })
 })
 
-returnHistory.addEventListener('click', ()=>{
-    console.log("entre a return history");
-    console.log("ultimo elemento es: "+ moviesHistory[moviesHistory.length - 1 ]);
-    console.log("")
-    if(moviesHistory.length==1){
-        location.hash = '#home';
-    }if(moviesHistory.length>1){
-        moviesHistory.pop()
-        // location.hash = '#search=' + moviesHistory[moviesHistory.length - 1 ];
-        getByMoviesByQuery(moviesHistory[moviesHistory.length - 1 ]);
-        searchInput.value= moviesHistory[moviesHistory.length - 1 ];
+// returnHistory.addEventListener('click', ()=>{
+//     console.log("entre a return history");
+//     console.log("ultimo elemento es: "+ moviesHistory[moviesHistory.length - 1 ]);
+//     console.log("")
+//     if(moviesHistory.length==1){
+//         location.hash = '#home';
+//     }if(moviesHistory.length>1){
+//         moviesHistory.pop()
+//         // location.hash = '#search=' + moviesHistory[moviesHistory.length - 1 ];
+//         getByMoviesByQuery(moviesHistory[moviesHistory.length - 1 ]);
+//         searchInput.value= moviesHistory[moviesHistory.length - 1 ];
 
-    }
-})
+//     }
+// })
 
 let moviesHistory = []
 
@@ -53,7 +55,7 @@ function navigator(){
         categoriesPage();
     }else if(location.hash.startsWith('#search=')){
         searchMovie();
-    }else if(location.hash.startsWith('#informationMovie')){
+    }else if(location.hash.startsWith('#informationMovie=')){
         informationMovie();
     }else{
         homePage();
@@ -73,6 +75,7 @@ function searchMovie(){
     sectionSearchMovie.classList.remove('inactive');
     sectionCategoryCollection.classList.add('inactive');
     sectionSearchMovieMain.classList.remove('inactive');
+    sectionUpcoming.classList.add('inactive');
     //[#search, vengadores] = location.hash.split("=")
     const [_,query] = location.hash.split("=")
     getByMoviesByQuery(query);
@@ -95,6 +98,11 @@ function informationMovie(){
     sectionInformationMovie.classList.remove('inactive');
     sectionCategoryCollection.classList.add('inactive');
     sectionSearchMovieMain.classList.add('inactive');
+    sectionUpcoming.classList.add('inactive');
+    // [sinImportancia,id]
+    const [_,id] = location.hash.split("=")
+    getByMovieByID(id);
+    console.log("el id es : "+ id)
 }
 function categoriesPage(){
 
@@ -107,6 +115,7 @@ function categoriesPage(){
     sectionSearchMovie.classList.add('inactive');
     sectionInformationMovie.classList.add('inactive');
     sectionSearchMovieMain.classList.add('inactive');
+    sectionUpcoming.classList.add('inactive');
 
     const [_,info] = location.hash.split("="); // [#category=,id-name]
     const [categoryId,categoryName]= info.split("-");
@@ -116,6 +125,7 @@ function categoriesPage(){
     getByMoviesByCategory(categoryId,categoryName);
 }
 function homePage(){
+    
     console.log("HOMEEEEEE")
     sectionInformationMovie.classList.add('inactive');
     sectionSearchMovie.classList.add('inactive');
@@ -125,9 +135,10 @@ function homePage(){
     sectionBestMovie.classList.remove('inactive');
     sectionMoviesCategories.classList.remove('inactive');
     sectionCategoryCollection.classList.add('inactive');
-
+    sectionUpcoming.classList.remove('inactive');
     getTrendingMoviesPreview();
     getCategoriesMovies();
-    moviesHistory=[];
+    getUpcomingMovies();
+    // moviesHistory=[];
 }
 
